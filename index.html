@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mahmoud Gaming — بيع شدات، كروت سيارات، حسابات قوية</title>
+  <meta name="description" content="متجر محمود جيمينج لبيع وشراء شدات (UC)، كروت سيارات (Lamborghini, Ferrari...) وبيع وشراء حسابات PUBG مستوى 40-98." />
+  <style>
+    /* Bright, playful UI */
+    :root{
+      --bg:#fff7f0; --card:#ffffff; --accent1:#ff6b6b; --accent2:#ffb86b; --accent3:#6b9bff; --muted:#57606f; --glass:rgba(255,255,255,0.6);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,'Noto Naskh Arabic',sans-serif;margin:0;background:linear-gradient(180deg,#fff7f0 0%,#f0fbff 100%);color:#1b2430}
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 28px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:60px;height:60px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent3));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:18px}
+    h1{margin:0;font-size:20px}
+    .tag{font-size:13px;color:var(--muted)}
+    nav{display:flex;gap:12px;align-items:center}
+    .btn{background:#fff;border:none;padding:10px 14px;border-radius:10px;box-shadow:0 6px 18px rgba(107,155,255,0.12);cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg,var(--accent3),var(--accent2));color:#012;box-shadow:0 10px 30px rgba(255,184,107,0.16)}
+    main{padding:28px;display:grid;grid-template-columns:320px 1fr;gap:24px}
+    .card{background:var(--card);border-radius:var(--radius);padding:16px;box-shadow:0 6px 24px rgba(27,36,48,0.06)}
+    .search{display:flex;gap:8px}
+    input,select,textarea{padding:10px;border-radius:10px;border:1px solid #eef3f7;font-size:14px}
+    .filters label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
+    .chips{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{background:linear-gradient(90deg,#fff,#fff7);padding:6px 10px;border-radius:999px;border:1px solid rgba(27,36,48,0.04);font-size:13px;color:var(--muted)}
+    .products{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+    .product{border-radius:12px;padding:12px;background:linear-gradient(180deg,#ffffff, #fffcec);border:1px solid rgba(27,36,48,0.04);display:flex;flex-direction:column;gap:8px}
+    .thumb{height:140px;border-radius:10px;overflow:hidden;display:flex;align-items:end;padding:12px;color:#fff;font-weight:800;background-size:cover;background-position:center}
+    .meta{font-size:13px;color:var(--muted)}
+    .price{font-weight:800;color:var(--accent1)}
+    footer{padding:18px 28px;text-align:center;color:var(--muted)}
+    .right-col{display:flex;flex-direction:column;gap:16px}
+    .hero{display:flex;gap:16px;align-items:center;padding:18px;border-radius:16px;background:linear-gradient(90deg,#fff2f2,#f7fbff)}
+    .hero .info{flex:1}
+    .big{font-size:22px;font-weight:800;margin:0}
+    .sub{color:var(--muted);margin-top:6px}
+    .quick{display:flex;gap:10px;margin-top:12px}
+    .contact{display:flex;gap:8px;align-items:center}
+    .whatsapp{background:linear-gradient(90deg,#25D366,#128C7E);color:white;padding:10px 12px;border-radius:10px;border:none}
+    .phone{background:linear-gradient(90deg,#ffb86b,#ff6b6b);color:white;padding:10px 12px;border-radius:10px;border:none}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .gallery img{width:100%;height:80px;object-fit:cover;border-radius:8px}
+    .notice{background:linear-gradient(90deg,#fff,#fff7);padding:10px;border-radius:10px;border:1px dashed rgba(27,36,48,0.04);font-size:13px}
+
+    /* listing form */
+    .form-row{display:flex;gap:8px}
+    @media(max-width:960px){main{grid-template-columns:1fr;padding:18px} .products{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">MG</div>
+      <div>
+        <h1>Mahmoud Gaming</h1>
+        <div class="tag">بيع شدات (UC)، كروت سيارات، وحسابات PUBG من مستوى 40 حتى 98</div>
+      </div>
+    </div>
+    <nav>
+      <button class="btn">الرئيسية</button>
+      <button class="btn">المنتجات</button>
+      <button class="btn">بيع حساب</button>
+      <button class="btn primary" id="sellNow">إنشاء إعلان</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- الشريط الجانبي -->
+    <aside>
+      <div class="card">
+        <h3>بحث سريع</h3>
+        <div class="search">
+          <input id="q" placeholder="ابحث عن لامبورجيني، حساب مستوى 60...">
+          <button class="btn" id="searchBtn">ابحث</button>
+        </div>
+
+        <div style="margin-top:12px">
+          <label>الفئة</label>
+          <select id="type">
+            <option value="all">الكل</option>
+            <option value="uc">شدات (UC)</option>
+            <option value="card">كروت سيارات</option>
+            <option value="account">حسابات</option>
+          </select>
+        </div>
+
+        <div style="margin-top:12px">
+          <label>مستوى الحساب</label>
+          <select id="minLvl">
+            <option value="40">40+</option>
+            <option value="50">50+</option>
+            <option value="60">60+</option>
+            <option value="70">70+</option>
+            <option value="80">80+</option>
+            <option value="90">90+</option>
+          </select>
+        </div>
+
+        <div style="margin-top:12px" class="notice">
+          يمكنك الشراء مباشرة من خلال رقم الهاتف أو التواصل عبر الواتساب — سيتم عرض الخيار عند الضغط على "اشترِ الآن".
+        </div>
+
+        <div style="margin-top:12px" class="card">
+          <h4>صور مثال للشراء</h4>
+          <div class="gallery" id="exampleScreens">
+            <img src="https://images.unsplash.com/photo-1605902711622-cfb43c44367e?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="s1">
+            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="s2">
+            <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="s3">
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- العمود الرئيسي -->
+    <section class="right-col">
+      <div class="hero card">
+        <div style="width:120px;height:120px;border-radius:20px;background:linear-gradient(135deg,var(--accent1),var(--accent3));display:flex;align-items:center;justify-content:center;color:white;font-weight:900;font-size:28px">MG</div>
+        <div class="info">
+          <p class="big">اشتري شدات، كروت سيارات وحسابات قوية بثقة</p>
+          <p class="sub">بيع وشراء آمن؛ الدفع عبر رقم الهاتف مباشر أو تواصل عبر واتساب. حسابات من مستوى 40 حتى 98.</p>
+          <div class="quick">
+            <button class="whatsapp" id="waBtn">تواصل عبر واتساب</button>
+            <button class="phone" id="phoneBtn">اشترِ عبر الهاتف</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>أكثر المنتجات شهرة</h3>
+        <div class="products" id="products"></div>
+      </div>
+
+      <div class="card">
+        <h3>قواعد البيع والشراء</h3>
+        <ul>
+          <li>نقبل حسابات من المستوى 40 إلى 98 فقط.</li>
+          <li>يُطلب من البائع وضع صور/سكرين شات واضحة تُظهر العناصر المعلن عنها.</li>
+          <li>يوجد خيار الدفع عبر رقم الهاتف (محاكاة) أو التواصل عبر واتساب لإتمام الصفقة.</li>
+          <li>الموقع يعمل كمنصة وسيط (Escrow) لتقليل الاحتيال — في النسخة النهائية نوصي بربط بوابة دفع فعلية.</li>
+        </ul>
+      </div>
+
+      <!-- Payment Upload Section -->
+  <section id="payment-upload" class="p-6 bg-[#111] text-white rounded-xl shadow-xl mt-8 border border-[#222]">
+    <h2 class="text-3xl font-bold text-yellow-400 mb-4">رفع صورة الدفع</h2>
+    <p class="mb-4 text-gray-300">قم برفع Screenshot لعملية الدفع وسيتم تأكيد الطلب خلال 10 دقائق.</p>
+
+    <input type="file" id="paymentImage" accept="image/*" class="bg-[#222] p-3 rounded-lg w-full mb-4 border border-gray-600 cursor-pointer" />
+
+    <button onclick="sendPayment()" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-6 py-3 rounded-lg w-full">إرسال</button>
+
+    <p id="paymentStatus" class="mt-4 text-green-400 hidden">تم إرسال الصورة بنجاح! سيتم تأكيد طلبك خلال 10 دقائق.</p>
+  </section>
+</main>
+
+  <footer>
+    <div style="padding:18px 28px;border-top:1px solid rgba(27,36,48,0.04);display:flex;justify-content:space-between;align-items:center">
+      <div class="small">© Mahmoud Gaming — جميع الحقوق محفوظة</div>
+      <div class="contact">
+        <a href="tel:+201234567890" class="phone">اتصل الآن: +20 1234567890</a>
+        <a id="waLink" href="https://wa.me/201234567890" target="_blank" class="whatsapp">واتساب</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- مودال و JS -->
+  <div id="modal" style="display:none;position:fixed;inset:0;background:rgba(1,6,12,0.45);align-items:center;justify-content:center;padding:20px">
+    <div style="background:white;border-radius:12px;max-width:720px;width:100%;padding:16px;direction:rtl">
+      <div id="modalInner"></div>
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px">
+        <button onclick="closeModal()" class="btn">إغلاق</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // بيانات تجريبية
+    const PRODUCTS = [
+      {id:1,type:'uc',title:'شدة 2000 UC',price:25,thumb:'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder',meta:'2000 UC - توصيل فوري (كود)',verified:true},
+      {id:2,type:'card',title:'كرت سيارة - Lamborghini',price:120,thumb:'https://images.unsplash.com/photo-1511396470179-8a1a4d1b0a6b?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder',meta:'Lamborghini Skin - سهل الاستبدال',verified:true},
+      {id:3,type:'card',title:'كرت سيارة - Ferrari',price:110,thumb:'https://images.unsplash.com/photo-1542362567-b07e54358753?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder',meta:'Ferrari Skin',verified:false},
+      {id:4,type:'account',title:'حساب PUBG Level 60 (Ace)',price:140,thumb:'https://images.unsplash.com/photo-1603415526960-f7e0328c0a5a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder',meta:'Level 60 - Ace - شامل 2000 UC',level:60,verified:true},
+      {id:5,type:'account',title:'حساب PUBG Level 85 (Conqueror)',price:320,thumb:'https://images.unsplash.com/photo-1545235617-9465a88b0b2f?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder',meta:'Level 85 - Conqueror - Lamborgini Skin',level:85,verified:true}
+    ];
+
+    const productsEl = document.getElementById('products');
+    const qEl = document.getElementById('q');
+    const searchBtn = document.getElementById('searchBtn');
+    const typeEl = document.getElementById('type');
+    const minLvlEl = document.getElementById('minLvl');
+    const waBtn = document.getElementById('waBtn');
+    const phoneBtn = document.getElementById('phoneBtn');
+
+    function render(list){
+      productsEl.innerHTML='';
+      if(!list.length){ productsEl.innerHTML='<div class="meta">لا توجد نتائج</div>'; return }
+      list.forEach(p=>{
+        const el = document.createElement('div'); el.className='product';
+        el.innerHTML = `
+          <div class="thumb" style="background-image:url('${p.thumb}')">${p.verified?'<div style="background:rgba(0,0,0,0.25);padding:6px;border-radius:8px;margin-bottom:6px;">موثوق</div>':''}</div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:800">${escapeHtml(p.title)}</div>
+              <div class="meta">${escapeHtml(p.meta)}</div>
+            </div>
+            <div style="text-align:left">
+              <div class="price">$${p.price}</div>
+              <div class="meta">${p.type==='account'?('Lv '+(p.level||'—')):''}</div>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:8px">
+            <button onclick="viewProduct(${p.id})" class="btn">عرض</button>
+            <button onclick="buyProduct(${p.id})" class="btn primary">اشترِ الآن</button>
+          </div>
+        `;
+        productsEl.appendChild(el);
+      })
+    }
+
+    function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') }
+
+    function viewProduct(id){
+      const p = PRODUCTS.find(x=>x.id===id);
+      if(!p) return;
+      showModal(`
+        <h3 style="margin:0">${escapeHtml(p.title)}</h3>
+        <p class="meta">${escapeHtml(p.meta)}</p>
+        <div style="margin-top:10px">السعر: <strong>$${p.price}</strong></div>
+        <div style="margin-top:8px" class="gallery">
+          <img src="${p.thumb}" alt="s1">
+          <img src="${p.thumb}" alt="s2">
+          <img src="${p.thumb}" alt="s3">
+        </div>
+        <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
+          <button class="btn" onclick="buyProduct(${p.id})">اشترِ الآن</button>
+        </div>
+      `);
+    }
+
+    function buyProduct(id){
+      const p = PRODUCTS.find(x=>x.id===id);
+      if(!p) return;
+      showModal(`
+        <h3>خيارات الشراء — ${escapeHtml(p.title)}</h3>
+        <p class="meta">اختر طريقة الدفع المفضلة. يمكنك الدفع مباشرة عن طريق رقم الهاتف أو التواصل عبر واتساب لإتمام الصفقة.</p>
+        <div style="margin-top:8px">
+          <label>ادخل رقم هاتفك للشراء (للدفع عبر محاكاة التحويل):</label>
+          <input id="payPhone" placeholder="مثال: 01234567890" />
+        </div>
+        <div style="margin-top:8px">أو
+          <div style="margin-top:6px">تواصل مع البائع عبر الواتساب:</div>
+          <a href="https://wa.me/201234567890" target="_blank" class="whatsapp">إرسال رسالة عبر واتساب</a>
+        </div>
+        <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
+          <button class="btn primary" onclick="confirmPhonePay(${p.id})">ادفع بواسطة الهاتف</button>
+          <button class="btn" onclick="closeModal()">إلغاء</button>
+        </div>
+      `);
+    }
+
+    function confirmPhonePay(id){
+      const phone = document.getElementById('payPhone')?.value.trim();
+      if(!phone){ return alert('من فضلك أدخل رقم هاتفك للمتابعة (محاكاة).') }
+      closeModal();
+      alert('تم استلام طلبك (محاكاة). سيتم التواصل معك عبر ' + phone + ' أو عبر الواتساب لإتمام الدفع والتسليم.');
+    }
+
+    function showModal(html){
+      document.getElementById('modalInner').innerHTML = html;
+      document.getElementById('modal').style.display = 'flex';
+    }
+    function closeModal(){ document.getElementById('modal').style.display = 'none'; document.getElementById('modalInner').innerHTML = '' }
+
+    // Filters
+    function applyFilters(){
+      const q = qEl.value.trim().toLowerCase();
+      const type = typeEl.value;
+      const minLvl = parseInt(minLvlEl.value,10) || 40;
+      const res = PRODUCTS.filter(p=>{
+        if(type!=='all' && p.type!==type) return false;
+        if(type==='account' && (p.level||0) < minLvl) return false;
+        if(q && !(p.title.toLowerCase().includes(q) || (p.meta||'').toLowerCase().includes(q))) return false;
+        return true;
+      });
+      render(res);
+    }
+
+    searchBtn.addEventListener('click', applyFilters);
+    typeEl.addEventListener('change', applyFilters);
+    minLvlEl.addEventListener('change', applyFilters);
+
+    // Quick contact buttons
+    waBtn.addEventListener('click', ()=>{ window.open('https://wa.me/201234567890','_blank') });
+    phoneBtn.addEventListener('click', ()=>{ showModal(`<h3>اشترِ عبر الهاتف</h3><p class="meta">ادخل رقم هاتفك وسيتواصل معك فريقنا لإتمام الدفع (محاكاة)</p><input id="quickPhone" placeholder="01234567890" /><div style="margin-top:12px;display:flex;justify-content:flex-end;gap:8px"><button class="btn primary" onclick="okQuickPhone()">إرسال</button></div>`); });
+    function okQuickPhone(){ const v = document.getElementById('quickPhone').value.trim(); if(!v) return alert('ادخل رقم الهاتف'); closeModal(); alert('تم استلام رقمك (محاكاة). سنتواصل معك على ' + v); }
+
+    // Sell Now button triggers listing form
+    document.getElementById('sellNow').addEventListener('click', ()=>{
+      showModal(`<h3>إنشاء إعلان بيع</h3>
+      <div class="form-row">
+        <div style="flex:1"><label>العنوان</label><input id="s_title" placeholder="مثال: حساب Level 70 مع Lamborgini"></div>
+        <div style="width:140px"><label>السعر $</label><input id="s_price" type="number"></div>
+      </div>
+      <label>الفئة</label>
+      <select id="s_type"><option value="account">حساب</option><option value="uc">شدات</option><option value="card">كرت سيارة</option></select>
+      <label>تفاصيل</label>
+      <textarea id="s_meta" rows="3" placeholder="يجب رفع سكرين للشحنة أو لملكية الحساب"></textarea>
+      <div style="margin-top:12px;display:flex;justify-content:flex-end;gap:8px">
+        <button class="btn primary" onclick="submitListing()">إرسال للإدارة</button>
+      </div>
+      `);
+    });
+
+    function submitListing(){
+      const title = document.getElementById('s_title').value.trim();
+      const price = parseFloat(document.getElementById('s_price').value)||0;
+      const type = document.getElementById('s_type').value;
+      const meta = document.getElementById('s_meta').value.trim();
+      if(!title || !price){ return alert('من فضلك اكمل الحقول') }
+      const id = Math.max(...PRODUCTS.map(p=>p.id))+1;
+      PRODUCTS.push({id,type,title,price,meta,thumb:'https://images.unsplash.com/photo-1523475496153-3d6cc3a3f1f6?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder',verified:false});
+      closeModal(); render(PRODUCTS);
+      alert('تم إرسال الإعلان للإدارة للمراجعة (محاكاة).');
+    }
+
+    // init
+    render(PRODUCTS);
+  function sendPayment() {
+  const file = document.getElementById('paymentImage').files[0];
+  if (!file) {
+    alert('من فضلك قم برفع صورة الدفع أولاً');
+    return;
+  }
+  document.getElementById('paymentStatus').classList.remove('hidden');
+}
+</script>
+</body>
+</html>
