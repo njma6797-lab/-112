@@ -3,183 +3,143 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mahmoud Gaming — بيع شدات وكروت سيارات وحسابات PUBG</title>
-<meta name="description" content="Mahmoud Gaming — متجر بيع شدات (UC)، كروت سيارات وحسابات PUBG موثقة">
+<title>MGM — محمود جيمينج</title>
 <style>
-  /* ===== خلفية دخان نيون ===== */
-  body{
-    margin:0;
-    font-family:'Noto Naskh Arabic',sans-serif;
-    background:#0a0a0a;
-    overflow-x:hidden;
-    color:#fff;
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+  body {margin:0; font-family:'Inter', sans-serif; background:#0e0e0e; color:#fff; overflow-x:hidden;}
+  /* خلفية متحركة */
+  body::before {
+    content:""; position:fixed; inset:0; background:linear-gradient(45deg,#ff6b6b,#6b9bff,#ffb86b); background-size:600% 600%; animation:gradientAnim 20s ease infinite; z-index:-1;
   }
-  body::before{
-    content:'';
-    position:fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    background: radial-gradient(circle, rgba(0,255,255,0.1), transparent 70%);
-    z-index:-2;
-    animation: movebg 20s linear infinite;
-  }
-  body::after{
-    content:'';
-    position:fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    background: radial-gradient(circle, rgba(255,0,255,0.1), transparent 70%);
-    z-index:-2;
-    animation: movebg2 25s linear infinite;
-  }
-  @keyframes movebg{
-    0%{transform:translate(0,0)}
-    50%{transform:translate(100px,50px)}
-    100%{transform:translate(0,0)}
-  }
-  @keyframes movebg2{
-    0%{transform:translate(0,0)}
-    50%{transform:translate(-100px,80px)}
-    100%{transform:translate(0,0)}
-  }
-
-  /* ===== شعار ونيون ===== */
-  header{
-    display:flex; justify-content:space-between; align-items:center;
-    padding:15px 25px;
-    text-shadow: 0 0 10px #0ff, 0 0 20px #f0f;
-    background:rgba(0,0,0,0.6);
-    border-bottom:2px solid #0ff;
-  }
-  .logo{
-    font-size:28px;
-    font-weight:900;
-    color:#0ff;
-    text-shadow: 0 0 5px #0ff, 0 0 15px #f0f;
-  }
-  header h1{
-    margin:0;
-    font-size:22px;
-    color:#fff;
-  }
-  nav button{
-    background:linear-gradient(90deg,#0ff,#f0f);
-    border:none; padding:8px 15px; border-radius:12px;
-    color:#000;
-    font-weight:700;
-    cursor:pointer;
-    text-shadow:0 0 5px #fff;
-    transition:0.3s;
-  }
-  nav button:hover{box-shadow:0 0 15px #0ff,0 0 30px #f0f;}
-
-  main{padding:20px; display:flex; flex-wrap:wrap; gap:20px; justify-content:center;}
-  .card{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.2);
-    backdrop-filter:blur(10px);
-    border-radius:16px;
-    padding:16px;
-    width:300px;
-    text-align:center;
-    box-shadow:0 0 10px #0ff,0 0 20px #f0f;
-    transition:0.3s;
-  }
-  .card:hover{transform:scale(1.05); box-shadow:0 0 20px #0ff,0 0 40px #f0f;}
-
-  .thumb{
-    width:100%; height:180px;
-    border-radius:12px;
-    background-size:cover; background-position:center;
-    margin-bottom:10px;
-    border:2px solid #0ff;
-  }
-  .price{
-    font-size:20px;
-    font-weight:900;
-    color:#0ff;
-    margin:8px 0;
-    position:relative;
-  }
-  .price::after{
-    content:'خصم 55%';
-    position:absolute;
-    top:-20px; right:0;
-    font-size:12px; color:#f0f;
-  }
-  .verified{
-    display:inline-block;
-    background:linear-gradient(90deg,#0ff,#f0f);
-    padding:4px 8px; border-radius:12px;
-    font-size:12px; margin-bottom:6px;
-  }
-  button.buy{
-    background:linear-gradient(90deg,#0ff,#f0f);
-    border:none; padding:10px 16px;
-    border-radius:12px;
-    font-weight:700;
-    color:#000;
-    cursor:pointer;
-    margin-top:10px;
-    width:100%;
-    transition:0.3s;
-  }
-  button.buy:hover{box-shadow:0 0 15px #0ff,0 0 30px #f0f;}
+  @keyframes gradientAnim {0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+  .container {max-width:1200px; margin:auto; padding:20px;}
+  h1,h2,h3,h4,h5,h6 {margin:0;}
+  .neon-text {text-shadow:0 0 5px #fff,0 0 10px #ff6b6b,0 0 20px #ff6b6b,0 0 30px #ff6b6b,0 0 40px #ff6b6b;}
+  .logo {width:100px;height:100px; background:linear-gradient(135deg,#ff6b6b,#6b9bff); border-radius:20px; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:900; color:white; margin:auto;}
+  .verified {color:#00ff6a; font-weight:bold;} /* توثيق PUBG */
+  .card {background:rgba(0,0,0,0.6); border-radius:16px; padding:16px; margin:16px 0; backdrop-filter:blur(8px);}
+  .product {display:flex; flex-direction:column; background:rgba(255,255,255,0.05); border-radius:12px; overflow:hidden; margin-bottom:16px;}
+  .thumb {height:160px; background-size:cover; background-position:center; position:relative;}
+  .price-tag {position:absolute; top:8px; right:8px; background:rgba(255,107,107,0.8); padding:6px 10px; border-radius:8px; font-weight:bold;}
+  button {padding:10px 14px; border:none; border-radius:12px; cursor:pointer; font-weight:bold; margin-top:8px; transition:0.3s;}
+  .btn-primary {background:linear-gradient(90deg,#ff6b6b,#ffb86b); color:#000;}
+  .btn-whatsapp {background:linear-gradient(90deg,#25D366,#128C7E); color:#fff; display:inline-block; text-decoration:none;}
+  input, select, textarea {padding:10px; border-radius:10px; border:none; width:100%; margin-top:8px; font-size:14px;}
+  .welcome-box {position:fixed; inset:0; background:rgba(0,0,0,0.85); display:flex; flex-direction:column; justify-content:center; align-items:center; z-index:999; padding:20px; text-align:center; border-radius:16px;}
+  .hidden {display:none;}
 </style>
 </head>
 <body>
-<header>
-  <div class="logo">MG</div>
-  <h1>Mahmoud Gaming <span style="font-size:14px; color:#0ff;">موثق من ببجي ✔️</span></h1>
-  <nav>
-    <button onclick="alert('الصفحة الرئيسية')">الرئيسية</button>
-    <button onclick="alert('المنتجات')">المنتجات</button>
-    <button onclick="alert('بيع حساب')">بيع حساب</button>
-  </nav>
-</header>
 
-<main id="products">
-  <!-- المنتجات ستضاف هنا ديناميكي -->
-</main>
+<!-- شاشة الترحيب -->
+<div class="welcome-box" id="welcomeBox">
+  <div class="logo neon-text">MGM</div>
+  <h2 class="neon-text">مرحبًا بك في محمود جيمينج</h2>
+  <p>اضغط الرقم للاختيار:</p>
+  <button onclick="chooseLanguage(1)">1 - العربية</button>
+  <button onclick="chooseLanguage(2)">2 - English</button>
+</div>
+
+<div class="container hidden" id="mainContent">
+
+  <!-- تسجيل دخول / كتابة ID -->
+  <div class="card">
+    <h3>تسجيل الدخول</h3>
+    <label>اكتب ID الخاص بك:</label>
+    <input type="text" id="userID" placeholder="مثال: 12345">
+    <button class="btn-primary" onclick="login()">دخول</button>
+  </div>
+
+  <!-- شعار وتوثيق -->
+  <div class="logo">MGM</div>
+  <p class="verified">موثق من PUBG ✅</p>
+
+  <!-- المنتجات -->
+  <div class="card">
+    <h3>أكثر المنتجات شهرة</h3>
+    <div id="products"></div>
+  </div>
+
+</div>
 
 <script>
-const PRODUCTS=[
-  {id:1,type:'uc',title:'شدة 2000 UC',price:60,thumb:'https://www.pubgmobile.com/images/uc-2000.jpg',verified:true},
-  {id:2,type:'uc',title:'شدة 4000 UC',price:120,thumb:'https://www.pubgmobile.com/images/uc-4000.jpg',verified:true},
-  {id:3,type:'card',title:'كرت سيارة Lamborghini',price:2000,thumb:'https://www.pubgmobile.com/images/lamborghini.jpg',verified:true},
-  {id:4,type:'card',title:'كرت سيارة Ferrari',price:2100,thumb:'https://www.pubgmobile.com/images/ferrari.jpg',verified:true},
-  {id:5,type:'account',title:'حساب PUBG Level 70',price:400,thumb:'https://www.pubgmobile.com/images/account70.jpg',verified:true},
+// بيانات المنتجات مع خصم 50% عن الأسعار المعروفة
+const PRODUCTS = [
+  {id:1,type:'uc',title:'شدة 2000 UC',price:25,thumb:'https://images.unsplash.com/photo-1590608897129-79a0f7f961f2?auto=format&fit=crop&w=800&q=80',meta:'2000 UC'},
+  {id:2,type:'card',title:'كرت سيارة - Lamborghini',price:4000,thumb:'https://images.unsplash.com/photo-1571607380695-c19d0cb04a27?auto=format&fit=crop&w=800&q=80',meta:'Lamborghini Skin'},
+  {id:3,type:'card',title:'كرت سيارة - Ferrari',price:3500,thumb:'https://images.unsplash.com/photo-1563729784477-65d2951f4dc7?auto=format&fit=crop&w=800&q=80',meta:'Ferrari Skin'},
+  {id:4,type:'account',title:'حساب PUBG Level 60',price:140,thumb:'https://images.unsplash.com/photo-1603415526960-f7e0328c0a5a?auto=format&fit=crop&w=800&q=80',meta:'Level 60'},
+  {id:5,type:'account',title:'حساب PUBG Level 85',price:320,thumb:'https://images.unsplash.com/photo-1545235617-9465a88b0b2f?auto=format&fit=crop&w=800&q=80',meta:'Level 85'}
 ];
 
-const productsEl=document.getElementById('products');
-function render(){
-  productsEl.innerHTML='';
+// عرض المنتجات
+function renderProducts(){
+  const container = document.getElementById('products');
+  container.innerHTML='';
   PRODUCTS.forEach(p=>{
-    const card=document.createElement('div'); card.className='card';
-    card.innerHTML=`
-      ${p.verified?'<div class="verified">موثوق</div>':''}
-      <div class="thumb" style="background-image:url('${p.thumb}')"></div>
-      <div>${p.title}</div>
-      <div class="price">$${p.price}</div>
-      <button class="buy" onclick="buy(${p.id})">اشترِ الآن</button>
+    const div = document.createElement('div');
+    div.className='product';
+    div.innerHTML=`
+      <div class="thumb" style="background-image:url('${p.thumb}')">
+        <div class="price-tag">${p.price} جنيه</div>
+      </div>
+      <div style="padding:10px;">
+        <h4>${p.title}</h4>
+        <p>${p.meta}</p>
+        <a class="btn-whatsapp" href="https://wa.me/201206561893" target="_blank">شراء / تواصل عبر WhatsApp</a>
+      </div>
     `;
-    productsEl.appendChild(card);
+    container.appendChild(div);
   });
 }
 
-function buy(id){
-  const p=PRODUCTS.find(x=>x.id===id);
-  if(!p) return;
-  const method=prompt('اختر طريقة الدفع:\n1. Orange Cash\n2. واتساب مباشر');
-  if(method==='1'){
-    const phone=prompt('أرسل اسكرين الدفع على الرقم 01206561893 عبر Orange Cash');
-    alert('تم إرسال طلبك (محاكاة). سيتم التواصل معك على ' + phone);
-  }else{
-    window.open('https://wa.me/01206561893','_blank');
-  }
+// تسجيل دخول
+function login(){
+  const id = document.getElementById('userID').value.trim();
+  if(!id){alert('من فضلك ادخل ID'); return;}
+  alert('تم تسجيل الدخول بنجاح! ID: '+id);
 }
 
-render();
+// شاشة الترحيب الصوتية
+function speak(text, lang='ar'){ 
+  if(!('speechSynthesis' in window)){alert('جهازك لا يدعم الصوت'); return;}
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = lang;
+  speechSynthesis.speak(utter);
+}
+
+function chooseLanguage(option){
+  const box = document.getElementById('welcomeBox');
+  const main = document.getElementById('mainContent');
+  if(option===1){
+    speak('أهلاً بك في محمود جيمينج. للدخول اضغط واحد. للتحدث مع المدير اضغط اثنان', 'ar');
+    box.innerHTML=`
+      <h2 class="neon-text">اختر خيارك</h2>
+      <button onclick="chooseOption(1)">1 - الدخول للموقع</button>
+      <button onclick="chooseOption(2)">2 - التحدث مع المدير</button>
+    `;
+  } else {
+    speak('Welcome to Mahmoud Gaming. To enter the site press one. To talk to the manager press two.', 'en-US');
+    box.innerHTML=`
+      <h2 class="neon-text">Choose your option</h2>
+      <button onclick="chooseOption(1)">1 - Enter Site</button>
+      <button onclick="chooseOption(2)">2 - Talk to Manager</button>
+    `;
+  }
+  main.classList.remove('hidden');
+}
+
+function chooseOption(option){
+  if(option===1){
+    speak('جاري تحويلك للدخول...', 'ar');
+    document.getElementById('welcomeBox').style.display='none';
+    renderProducts();
+  } else {
+    speak('سيتم تحويلك للتواصل مع المدير الآن', 'ar');
+    window.open('https://wa.me/201206561893','_blank');
+  }
+}
 </script>
+
 </body>
 </html>
